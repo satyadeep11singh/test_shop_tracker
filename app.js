@@ -1,4 +1,3 @@
-// app.js
 const phoneNumberInput = document.getElementById('phoneNumber');
 const emailAddressInput = document.getElementById('emailAddress');
 const checkStatusButton = document.getElementById('checkStatus');
@@ -16,14 +15,13 @@ async function checkOrderStatus() {
   }
 
   try {
-    const response = await fetch('/check-order-status', {
+    const response = await fetch('/api/check-order-status', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ phoneNumber, emailAddress }),
     });
-
     const orderStatus = await response.json();
     renderOrderStatus(orderStatus);
   } catch (error) {
