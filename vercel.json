@@ -1,16 +1,7 @@
 {
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "/api/:path*"
+  "functions": {
+    "api/server.js": {
+      "runtime": "nodejs@18.x"
     }
-  ],
-  "regions": ["arn1"],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/server.js",
-      "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH", "HEAD"]
-    }
-  ]
+  }
 }
