@@ -1,7 +1,1 @@
-{
-  "functions": {
-    "api/server.js": {
-      "runtime": "nodejs@18.x"
-    }
-  }
-}
+{ "version": 2, "rewrites": [{ "source": "/(.*)", "destination": "/api" }] }
