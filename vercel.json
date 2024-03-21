@@ -1,7 +1,16 @@
 {
-  "functions": {
-    "api/server.js": {
-      "runtime": "nodejs@16.x"
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
     }
-  }
+  ],
+  "regions": ["arn1"],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/server.js",
+      "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH", "HEAD"]
+    }
+  ]
 }
