@@ -2,7 +2,7 @@ const express = require('express');
 const serverless = require('serverless-http');
 const path = require('path');
 const shopifyAPI = require('@shopify/shopify-api');
-
+console.log("here");
 // Initialize Shopify API client
 const shopifyClient = new shopifyAPI.clients.Rest({
   session: new shopifyAPI.session.CustomSessionStorage(['shopUrl', 'accessToken']),
