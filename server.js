@@ -1,6 +1,5 @@
-// server.js
 const express = require('express');
-const app = express();
+const serverless = require('serverless-http');
 const path = require('path');
 const shopifyAPI = require('@shopify/shopify-api');
 
@@ -8,6 +7,9 @@ const shopifyAPI = require('@shopify/shopify-api');
 const shopifyClient = new shopifyAPI.clients.Rest({
   session: new shopifyAPI.session.CustomSessionStorage(['shopUrl', 'accessToken']),
 });
+
+// Create an Express app
+const app = express();
 
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
@@ -45,7 +47,5 @@ app.post('/check-order-status', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// Wrap the Express app with serverless-http
+module.exports.handler = serverless(app);
